@@ -7,12 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B43EB569ACD9E33488E0AB0 /* libPods-DoomPrequel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C1BA950E8E973BFFFF5F8C /* libPods-DoomPrequel.a */; };
+		E818D23222D6844900231262 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23122D6844900231262 /* Camera.swift */; };
+		E818D23522D684DA00231262 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23422D684DA00231262 /* Rover.swift */; };
 		E85934E422C3630300333824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934E322C3630300333824 /* AppDelegate.swift */; };
 		E85934E622C3630300333824 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934E522C3630300333824 /* ViewController.swift */; };
 		E85934E922C3630300333824 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85934E722C3630300333824 /* Main.storyboard */; };
 		E85934EB22C3630400333824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85934EA22C3630400333824 /* Assets.xcassets */; };
 		E85934EE22C3630400333824 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85934EC22C3630400333824 /* LaunchScreen.storyboard */; };
 		E85934F922C3630400333824 /* DoomPrequelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934F822C3630400333824 /* DoomPrequelTests.swift */; };
+		E859350622C3686C00333824 /* NASAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859350522C3686C00333824 /* NASAService.swift */; };
+		E8843FFE22D7D69E00E5A5AE /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8843FFD22D7D69D00E5A5AE /* ApiClient.swift */; };
+		E884400022D7D6E200E5A5AE /* MarsRoverApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8843FFF22D7D6E200E5A5AE /* MarsRoverApi.swift */; };
+		E884400222D7D73100E5A5AE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400122D7D73100E5A5AE /* Photo.swift */; };
+		E884400422D7D8C200E5A5AE /* DPDateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */; };
+		E884400622D7D95B00E5A5AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400522D7D95B00E5A5AE /* Constants.swift */; };
+		E884400822D7DCC900E5A5AE /* NASARoverApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400722D7DCC900E5A5AE /* NASARoverApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67C1BA950E8E973BFFFF5F8C /* libPods-DoomPrequel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoomPrequel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EFDC18FC8079AC4DC7E0FA1 /* Pods-DoomPrequel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoomPrequel.release.xcconfig"; path = "Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel.release.xcconfig"; sourceTree = "<group>"; };
+		DA36CF0BD46481100C659B4B /* Pods-DoomPrequel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoomPrequel.debug.xcconfig"; path = "Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel.debug.xcconfig"; sourceTree = "<group>"; };
+		E818D23122D6844900231262 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		E818D23422D684DA00231262 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		E85934E022C3630300333824 /* DoomPrequel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoomPrequel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85934E322C3630300333824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E85934E522C3630300333824 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +51,13 @@
 		E85934F422C3630400333824 /* DoomPrequelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoomPrequelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85934F822C3630400333824 /* DoomPrequelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoomPrequelTests.swift; sourceTree = "<group>"; };
 		E85934FA22C3630400333824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E859350522C3686C00333824 /* NASAService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAService.swift; sourceTree = "<group>"; };
+		E8843FFD22D7D69D00E5A5AE /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		E8843FFF22D7D6E200E5A5AE /* MarsRoverApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverApi.swift; sourceTree = "<group>"; };
+		E884400122D7D73100E5A5AE /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDateFormatters.swift; sourceTree = "<group>"; };
+		E884400522D7D95B00E5A5AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E884400722D7DCC900E5A5AE /* NASARoverApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASARoverApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B43EB569ACD9E33488E0AB0 /* libPods-DoomPrequel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +79,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5741194490321C9C8EABA3B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67C1BA950E8E973BFFFF5F8C /* libPods-DoomPrequel.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C33468D28BF98B4C15DAFB6D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA36CF0BD46481100C659B4B /* Pods-DoomPrequel.debug.xcconfig */,
+				8EFDC18FC8079AC4DC7E0FA1 /* Pods-DoomPrequel.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E818D23322D684CA00231262 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E818D23122D6844900231262 /* Camera.swift */,
+				E818D23422D684DA00231262 /* Rover.swift */,
+				E884400122D7D73100E5A5AE /* Photo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E85934D722C3630300333824 = {
 			isa = PBXGroup;
 			children = (
 				E85934E222C3630300333824 /* DoomPrequel */,
 				E85934F722C3630400333824 /* DoomPrequelTests */,
 				E85934E122C3630300333824 /* Products */,
+				C33468D28BF98B4C15DAFB6D /* Pods */,
+				5741194490321C9C8EABA3B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +129,16 @@
 		E85934E222C3630300333824 /* DoomPrequel */ = {
 			isa = PBXGroup;
 			children = (
+				E818D23322D684CA00231262 /* Models */,
+				E859350422C3685800333824 /* NasaApi */,
 				E85934E322C3630300333824 /* AppDelegate.swift */,
 				E85934E522C3630300333824 /* ViewController.swift */,
 				E85934E722C3630300333824 /* Main.storyboard */,
 				E85934EA22C3630400333824 /* Assets.xcassets */,
 				E85934EC22C3630400333824 /* LaunchScreen.storyboard */,
 				E85934EF22C3630400333824 /* Info.plist */,
+				E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */,
+				E884400522D7D95B00E5A5AE /* Constants.swift */,
 			);
 			path = DoomPrequel;
 			sourceTree = "<group>";
@@ -96,6 +152,17 @@
 			path = DoomPrequelTests;
 			sourceTree = "<group>";
 		};
+		E859350422C3685800333824 /* NasaApi */ = {
+			isa = PBXGroup;
+			children = (
+				E859350522C3686C00333824 /* NASAService.swift */,
+				E8843FFD22D7D69D00E5A5AE /* ApiClient.swift */,
+				E8843FFF22D7D6E200E5A5AE /* MarsRoverApi.swift */,
+				E884400722D7DCC900E5A5AE /* NASARoverApi.swift */,
+			);
+			path = NasaApi;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,6 +170,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E85934FD22C3630400333824 /* Build configuration list for PBXNativeTarget "DoomPrequel" */;
 			buildPhases = (
+				AA07D9D01A536EC6CA136C31 /* [CP] Check Pods Manifest.lock */,
 				E85934DC22C3630300333824 /* Sources */,
 				E85934DD22C3630300333824 /* Frameworks */,
 				E85934DE22C3630300333824 /* Resources */,
@@ -192,13 +260,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AA07D9D01A536EC6CA136C31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoomPrequel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E85934DC22C3630300333824 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E884400422D7D8C200E5A5AE /* DPDateFormatters.swift in Sources */,
+				E884400222D7D73100E5A5AE /* Photo.swift in Sources */,
+				E884400022D7D6E200E5A5AE /* MarsRoverApi.swift in Sources */,
+				E859350622C3686C00333824 /* NASAService.swift in Sources */,
+				E818D23222D6844900231262 /* Camera.swift in Sources */,
+				E884400822D7DCC900E5A5AE /* NASARoverApi.swift in Sources */,
+				E884400622D7D95B00E5A5AE /* Constants.swift in Sources */,
+				E818D23522D684DA00231262 /* Rover.swift in Sources */,
 				E85934E622C3630300333824 /* ViewController.swift in Sources */,
 				E85934E422C3630300333824 /* AppDelegate.swift in Sources */,
+				E8843FFE22D7D69E00E5A5AE /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +460,7 @@
 		};
 		E85934FE22C3630400333824 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA36CF0BD46481100C659B4B /* Pods-DoomPrequel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +479,7 @@
 		};
 		E85934FF22C3630400333824 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EFDC18FC8079AC4DC7E0FA1 /* Pods-DoomPrequel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

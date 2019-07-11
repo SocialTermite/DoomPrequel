@@ -1,0 +1,6 @@
+module Pods_DoomPrequel {
+  umbrella header "Pods-DoomPrequel-umbrella.h"
+
+  export *
+  module * { export * }
+}
