@@ -15,6 +15,6 @@ enum MarsDate {
 }
 
 protocol MarsRoverApi {
-    func rovers() -> Observable<Rover>
-    func photos(for rover: Rover, with camera: Camera, at: MarsDate) -> Observable<[Photo]>
+    func rovers() -> Observable<[Rover]>
+    func photos(for rover: Rover, with camera: Camera, at marsDate: MarsDate) -> PageLoader<Photo>
 }

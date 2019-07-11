@@ -23,6 +23,10 @@
 		E884400422D7D8C200E5A5AE /* DPDateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */; };
 		E884400622D7D95B00E5A5AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400522D7D95B00E5A5AE /* Constants.swift */; };
 		E884400822D7DCC900E5A5AE /* NASARoverApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400722D7DCC900E5A5AE /* NASARoverApi.swift */; };
+		E884400A22D7E3CC00E5A5AE /* PhotosRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400922D7E3CC00E5A5AE /* PhotosRequestParameters.swift */; };
+		E884400D22D7E47700E5A5AE /* PageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400C22D7E47700E5A5AE /* PageLoader.swift */; };
+		E884400F22D7F36200E5A5AE /* RequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400E22D7F36200E5A5AE /* RequestParameters.swift */; };
+		E884401122D7F38200E5A5AE /* NASASerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884401022D7F38200E5A5AE /* NASASerializer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDateFormatters.swift; sourceTree = "<group>"; };
 		E884400522D7D95B00E5A5AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E884400722D7DCC900E5A5AE /* NASARoverApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASARoverApi.swift; sourceTree = "<group>"; };
+		E884400922D7E3CC00E5A5AE /* PhotosRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRequestParameters.swift; sourceTree = "<group>"; };
+		E884400C22D7E47700E5A5AE /* PageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageLoader.swift; sourceTree = "<group>"; };
+		E884400E22D7F36200E5A5AE /* RequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParameters.swift; sourceTree = "<group>"; };
+		E884401022D7F38200E5A5AE /* NASASerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASASerializer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +137,8 @@
 		E85934E222C3630300333824 /* DoomPrequel */ = {
 			isa = PBXGroup;
 			children = (
+				E884400B22D7E3FF00E5A5AE /* Api */,
 				E818D23322D684CA00231262 /* Models */,
-				E859350422C3685800333824 /* NasaApi */,
 				E85934E322C3630300333824 /* AppDelegate.swift */,
 				E85934E522C3630300333824 /* ViewController.swift */,
 				E85934E722C3630300333824 /* Main.storyboard */,
@@ -155,12 +163,24 @@
 		E859350422C3685800333824 /* NasaApi */ = {
 			isa = PBXGroup;
 			children = (
-				E859350522C3686C00333824 /* NASAService.swift */,
-				E8843FFD22D7D69D00E5A5AE /* ApiClient.swift */,
-				E8843FFF22D7D6E200E5A5AE /* MarsRoverApi.swift */,
 				E884400722D7DCC900E5A5AE /* NASARoverApi.swift */,
+				E859350522C3686C00333824 /* NASAService.swift */,
+				E884400922D7E3CC00E5A5AE /* PhotosRequestParameters.swift */,
+				E884401022D7F38200E5A5AE /* NASASerializer.swift */,
 			);
 			path = NasaApi;
+			sourceTree = "<group>";
+		};
+		E884400B22D7E3FF00E5A5AE /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				E8843FFD22D7D69D00E5A5AE /* ApiClient.swift */,
+				E8843FFF22D7D6E200E5A5AE /* MarsRoverApi.swift */,
+				E884400E22D7F36200E5A5AE /* RequestParameters.swift */,
+				E884400C22D7E47700E5A5AE /* PageLoader.swift */,
+				E859350422C3685800333824 /* NasaApi */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,17 +310,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E884400D22D7E47700E5A5AE /* PageLoader.swift in Sources */,
 				E884400422D7D8C200E5A5AE /* DPDateFormatters.swift in Sources */,
 				E884400222D7D73100E5A5AE /* Photo.swift in Sources */,
+				E884400F22D7F36200E5A5AE /* RequestParameters.swift in Sources */,
 				E884400022D7D6E200E5A5AE /* MarsRoverApi.swift in Sources */,
 				E859350622C3686C00333824 /* NASAService.swift in Sources */,
 				E818D23222D6844900231262 /* Camera.swift in Sources */,
 				E884400822D7DCC900E5A5AE /* NASARoverApi.swift in Sources */,
+				E884400A22D7E3CC00E5A5AE /* PhotosRequestParameters.swift in Sources */,
 				E884400622D7D95B00E5A5AE /* Constants.swift in Sources */,
 				E818D23522D684DA00231262 /* Rover.swift in Sources */,
 				E85934E622C3630300333824 /* ViewController.swift in Sources */,
 				E85934E422C3630300333824 /* AppDelegate.swift in Sources */,
 				E8843FFE22D7D69E00E5A5AE /* ApiClient.swift in Sources */,
+				E884401122D7F38200E5A5AE /* NASASerializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
