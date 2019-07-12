@@ -47,6 +47,8 @@
 		E884404D22D8F0A900E5A5AE /* NotoSerif-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E884404922D8F0A800E5A5AE /* NotoSerif-RegularItalic.ttf */; };
 		E884404E22D8F0A900E5A5AE /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E884404A22D8F0A900E5A5AE /* NotoSerif-Bold.ttf */; };
 		E884405022D8F8ED00E5A5AE /* DPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884404F22D8F8ED00E5A5AE /* DPViewController.swift */; };
+		E884405322D8FD8F00E5A5AE /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884405122D8FD8F00E5A5AE /* PhotoCell.swift */; };
+		E884405422D8FD8F00E5A5AE /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E884405222D8FD8F00E5A5AE /* PhotoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		E884404922D8F0A800E5A5AE /* NotoSerif-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-RegularItalic.ttf"; sourceTree = "<group>"; };
 		E884404A22D8F0A900E5A5AE /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		E884404F22D8F8ED00E5A5AE /* DPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPViewController.swift; sourceTree = "<group>"; };
+		E884405122D8FD8F00E5A5AE /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		E884405222D8FD8F00E5A5AE /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +257,8 @@
 				E884403722D8D62E00E5A5AE /* PhotosVC.swift */,
 				E884403A22D8DFCE00E5A5AE /* PhotosRouter.swift */,
 				E884403322D8D35F00E5A5AE /* PhotosModule.swift */,
+				E884405122D8FD8F00E5A5AE /* PhotoCell.swift */,
+				E884405222D8FD8F00E5A5AE /* PhotoCell.xib */,
 			);
 			path = PhotosScreen;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E884405422D8FD8F00E5A5AE /* PhotoCell.xib in Resources */,
 				E85934EE22C3630400333824 /* LaunchScreen.storyboard in Resources */,
 				E884402422D8A2B800E5A5AE /* RoverCell.xib in Resources */,
 				E884404C22D8F0A900E5A5AE /* NotoSerif-Regular.ttf in Resources */,
@@ -466,6 +473,7 @@
 				E884403B22D8DFCE00E5A5AE /* PhotosRouter.swift in Sources */,
 				E884400A22D7E3CC00E5A5AE /* PhotosRequestParameters.swift in Sources */,
 				E884400622D7D95B00E5A5AE /* Constants.swift in Sources */,
+				E884405322D8FD8F00E5A5AE /* PhotoCell.swift in Sources */,
 				E818D23522D684DA00231262 /* Rover.swift in Sources */,
 				E85934E622C3630300333824 /* ViewController.swift in Sources */,
 				E884402922D8CDD000E5A5AE /* Transition.swift in Sources */,

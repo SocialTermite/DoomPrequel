@@ -29,6 +29,19 @@ class PhotosVC : DPViewController {
         setupTableViewSource()
     }
     
+    private func setupTableViewSource() {
+        tableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
+        
+        viewModel
+            .photosObservable
+            .bind(to: tableView.rx.items(cellIdentifier: "PhotoCell", cellType: PhotoCell.self)) {[weak self] row, photo, cell in
+                cell.setup(with: photo)
+                self?.viewModel.rowPresented(row)
+            }
+            .disposed(by: trash)
+        
+    }
+    
     private func setupUI() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in

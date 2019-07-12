@@ -20,7 +20,7 @@ class PhotosVM {
     private lazy var pageLoader: PageLoader<Photo> = self.createPageLoader()
     private var photos: BehaviorRelay<[Photo]> = .init(value: [])
     
-    private var photosObservable: Observable<[Photo]> {
+    var photosObservable: Observable<[Photo]> {
         return photos.asObservable().observeOn(MainScheduler.instance)
     }
     
@@ -41,7 +41,7 @@ class PhotosVM {
         return api.photos(for: rover, with: selectedCamera, at: selectedDate)
     }
     
-    func newPage() {
+    func loadNewPage() {
         pageLoader
             .newPage()
             .bind(onNext: {[weak self] photos in
@@ -52,6 +52,13 @@ class PhotosVM {
                 self?.photos.accept(oldPhotos)
             })
             .disposed(by: trash)
+    }
+    
+    func rowPresented(_ row: Int) {
+        let photosLoaded = photos.value.count
+        if row == photosLoaded - 1 {
+            loadNewPage()
+        }
     }
     
     var cameras: [Camera] {
