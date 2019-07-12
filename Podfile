@@ -11,4 +11,5 @@ target 'DoomPrequel' do
     pod 'RxCocoa'
     pod 'RxDataSources'
     pod 'SnapKit'
+    pod 'RxKingfisher'
 end
