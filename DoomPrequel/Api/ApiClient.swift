@@ -20,7 +20,7 @@ class ApiClient {
         return roverApi.rovers()
     }
     
-    func photos(for rover: Rover, with camera: Camera, at marsDate: MarsDate) -> PageLoader<Photo> {
-        return roverApi.photos(for: rover, with: camera, at: marsDate)
+    func photos(for rover: Rover, with camera: Camera, at date: Date) -> PageLoader<Photo> {
+        return roverApi.photos(for: rover, with: camera, at: date)
     }
 }

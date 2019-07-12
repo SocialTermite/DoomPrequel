@@ -18,6 +18,7 @@ class PageLoader<T> {
     private(set) var page: Int = 0
     
     
+    
     init(params: RequestParameters, requestExecutor: @escaping (RequestParameters) -> Observable<[T]>) {
         self.requestParameters = params
         self.requestExecutor = requestExecutor

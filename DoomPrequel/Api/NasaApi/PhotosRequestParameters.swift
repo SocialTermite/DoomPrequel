@@ -11,17 +11,12 @@ import Foundation
 extension NASAService {
     struct PhotosRequestParameters: RequestParameters {
         var roverName: String
-        var sol: Int = 0
-        var date: Date?
+        var date: Date
         var camera: String
         
-        init(with rover: Rover, camera: Camera, marsDate: MarsDate) {
+        init(with rover: Rover, camera: Camera, date: Date) {
             self.roverName = rover.name
-            if case .sol(let sol) = marsDate {
-                self.sol = sol
-            } else if case .earthDate(let date) = marsDate {
-                self.date = date
-            }
+            self.date = date
             self.camera = camera.name
             _parameters = parameters
         }
@@ -30,11 +25,7 @@ extension NASAService {
         var parameters: JSON {
             var result = _parameters
             result["camera"] = camera
-            if let date = date {
-                result["earth_date"] = DPDateFormatters.default.string(from: date)
-            } else {
-                result["sol"] = sol
-            }
+            result["earth_date"] = DPDateFormatters.default.string(from: date)
             
             return result
         }

@@ -19,7 +19,8 @@ struct Rover {
     let cameras: [Camera]
 }
 
-extension Rover: Decodable {
+
+extension Rover: Codable {
     private enum RoverCodingKeys: String, CodingKey {
         case name
         case landingDate = "landing_date"
@@ -29,6 +30,20 @@ extension Rover: Decodable {
         case maxDate = "max_date"
         case totalPhotos = "total_photos"
         case cameras
+    }
+
+    
+    func encode(to encoder: Encoder) throws {
+        let formatter = DPDateFormatters.default
+        var container = encoder.container(keyedBy: RoverCodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(formatter.string(from: landingDate) , forKey: .landingDate)
+        try container.encode(formatter.string(from: launchDate), forKey: .launchDate)
+        try container.encode(status, forKey: .status)
+        try container.encode(maxSOL, forKey: .maxSOL)
+        try container.encode(formatter.string(from: maxDate), forKey: .maxDate)
+        try container.encode(totalPhotos, forKey: .totalPhotos)
+        try container.encode(cameras, forKey: .cameras)
     }
     
     init(from decoder: Decoder) throws {

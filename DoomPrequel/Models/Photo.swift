@@ -14,11 +14,19 @@ struct Photo {
     var imgSource: URL
 }
 
-extension Photo: Decodable {
+extension Photo: Codable {
     private enum PhotoCodingKey: String, CodingKey {
         case sol
         case date = "earth_date"
         case imgSource = "img_scr"
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        let formatter = DPDateFormatters.default
+        var container = encoder.container(keyedBy: PhotoCodingKey.self)
+        try container.encode(sol, forKey: .sol)
+        try container.encode(formatter.string(from: date), forKey: .date)
+        try container.encode(imgSource, forKey: .imgSource)
     }
     
     init(from decoder: Decoder) throws {
@@ -30,7 +38,5 @@ extension Photo: Decodable {
         let dateString = try container.decode(String.self, forKey: .date)
 
         date = DPDateFormatters.default.date(from: dateString) ?? Date()
-        
-
     }
 }

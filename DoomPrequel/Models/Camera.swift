@@ -13,10 +13,16 @@ struct Camera {
     var fullName: String
 }
 
-extension Camera: Decodable {
+extension Camera: Codable {
     private enum CameraCodingKey: String, CodingKey {
         case name
         case fullName = "full_name"
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CameraCodingKey.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(fullName, forKey: .fullName)
     }
     
     

@@ -23,8 +23,8 @@ class NASARoverApi: MarsRoverApi {
         return serializer.serializeArrayFromDict(rootKey: "rovers", response)
     }
 
-    func photos(for rover: Rover, with camera: Camera, at marsDate: MarsDate) -> PageLoader<Photo> {
-        let photosParameters = NASAService.PhotosRequestParameters.init(with: rover, camera: camera, marsDate: marsDate)
+    func photos(for rover: Rover, with camera: Camera, at date: Date) -> PageLoader<Photo> {
+        let photosParameters = NASAService.PhotosRequestParameters.init(with: rover, camera: camera, date: date)
         
         return PageLoader<Photo>(params: photosParameters) { [provider, serializer] in
             guard let params = $0 as? NASAService.PhotosRequestParameters else {

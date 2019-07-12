@@ -6,7 +6,7 @@
 //  Copyright © 2019 SocialTermite. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Constants {
     
@@ -15,5 +15,32 @@ class Constants {
 extension Constants {
     enum DateFormat: String {
         case `default` = "YYYY-MM-DD"
+    }
+}
+
+extension Constants {
+    enum StorageKey: String {
+        case selectedRover
+        case selectedCameras
+        case selectedDates
+    }
+}
+
+extension Constants {
+    enum Rover: String {
+        case curiosity
+        case spirit
+        case opportunity
+        
+        func image() -> UIImage {
+            switch self {
+            case .curiosity:
+                return UIImage(named: "curiosity")!
+            case .spirit:
+                return UIImage(named: "spirit")!
+            case .opportunity:
+                return UIImage(named: "opportunity")!
+            }
+        }
     }
 }
