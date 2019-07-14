@@ -18,7 +18,7 @@ extension Photo: Codable {
     private enum PhotoCodingKey: String, CodingKey {
         case sol
         case date = "earth_date"
-        case imgSource = "img_scr"
+        case imgSource = "img_src"
     }
     
     func encode(to encoder: Encoder) throws {

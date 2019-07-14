@@ -23,19 +23,11 @@ class UserCache {
     
     private var selectedCameras: [String: Camera]? { // roverName: Camera
         get {
-            return userDefaults.dictionary(forKey: Constants.StorageKey.selectedCameras.rawValue) as? [String: Camera]
+            return userDefaults.codableObject(forKey: Constants.StorageKey.selectedCameras.rawValue)
         }
         set {
-            userDefaults.set(newValue, forKey: Constants.StorageKey.selectedCameras.rawValue)
+            userDefaults.set(try! PropertyListEncoder().encode(newValue), forKey: Constants.StorageKey.selectedCameras.rawValue)
         }
-    }
-    
-    func selectedCamera(for rover: Rover) -> Camera? {
-        return selectedCameras?[rover.name]
-    }
-    
-    func selected(camera: Camera, for rover: Rover) {
-        selectedCameras?[rover.name] = camera
     }
     
     private var selectedDates: [String: Date]? { // roverName: Date
@@ -47,12 +39,26 @@ class UserCache {
         }
     }
     
+    func selectedCamera(for rover: Rover) -> Camera? {
+        return selectedCameras?[rover.name]
+    }
+    
     func selectedDate(for rover: Rover) -> Date? {
         return selectedDates?[rover.name]
     }
     
+    func selected(camera: Camera, for rover: Rover) {
+        selectedCameras = set(value: camera, for: rover.name, in: selectedCameras)
+    }
+
     func selected(date: Date, for rover: Rover) {
-        selectedDates?[rover.name] = date
+        selectedDates = set(value: date, for: rover.name, in: selectedDates)
+    }
+    
+    private func set<T>(value: T, for key: String, in source: [String: T]?) -> [String: T] {
+        var dict = source ?? [:]
+        dict[key] = value
+        return dict
     }
 }
 

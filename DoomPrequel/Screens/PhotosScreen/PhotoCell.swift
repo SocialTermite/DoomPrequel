@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import Kingfisher
+import RxSwift
+import RxCocoa
 
 
 class PhotoCell: UITableViewCell {    
     @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var tapButton: UIButton!
+    
+    var tabObservable: Observable<UIImageView> {
+        return tapButton.rx.tap.asObservable().map {  self.photoImageView } 
+    }
     
     func setup(with photo: Photo) {
-        //photo
+        photoImageView.kf.setImage(with: ImageResource(downloadURL: photo.imgSource))
     }
+    
 }

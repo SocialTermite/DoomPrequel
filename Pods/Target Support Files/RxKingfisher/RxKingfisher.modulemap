@@ -1,4 +1,4 @@
-module RxKingfisher {
+framework module RxKingfisher {
   umbrella header "RxKingfisher-umbrella.h"
 
   export *

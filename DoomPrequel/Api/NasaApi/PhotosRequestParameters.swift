@@ -24,8 +24,8 @@ extension NASAService {
         private var _parameters: JSON = [:]
         var parameters: JSON {
             var result = _parameters
-            result["camera"] = camera
             result["earth_date"] = DPDateFormatters.default.string(from: date)
+            result["camera"] = camera.lowercased()
             
             return result
         }

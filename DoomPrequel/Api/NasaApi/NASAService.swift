@@ -13,13 +13,13 @@ enum NASAService: TargetType {
     case photos(PhotosRequestParameters)
     
     public var baseURL: URL {
-        return URL(string: "https://api.nasa.gov/mars-photos/api/v1/")!
+        return URL(string: "https://api.nasa.gov/mars-photos/api/v1")!
     }
     
     public var path: String {
         switch self {
         case .rovers: return "/rovers"
-        case .photos(let parameters): return "\(parameters.roverName)/photos"
+        case .photos(let parameters): return "/rovers/\(parameters.roverName.lowercased())/photos"
         }
     }
     
@@ -31,6 +31,10 @@ enum NASAService: TargetType {
         return Data()
     }
     
+    var validationType: ValidationType {
+        return .successCodes
+    }
+    
     public var task: Task  {
         var requestParameters: JSON = ["api_key": NASAService.apiKey]
         switch self {
@@ -40,7 +44,6 @@ enum NASAService: TargetType {
             requestParameters.merge(dict: photosParameters.parameters)
             return .requestParameters(parameters: requestParameters, encoding: URLEncoding.queryString)
         }
-        
     }
     
     public var headers: [String : String]? {

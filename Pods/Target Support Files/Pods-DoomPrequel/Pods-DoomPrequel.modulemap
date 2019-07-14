@@ -1,4 +1,4 @@
-module Pods_DoomPrequel {
+framework module Pods_DoomPrequel {
   umbrella header "Pods-DoomPrequel-umbrella.h"
 
   export *

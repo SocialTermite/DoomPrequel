@@ -11,11 +11,19 @@ import Moya
 import RxSwift
 
 class NASARoverApi: MarsRoverApi {
-    private let provider = MoyaProvider<NASAService>()
+    private let provider: MoyaProvider<NASAService>
     private let serializer: Serializer
     
     init(serializer: Serializer) {
         self.serializer = serializer
+        
+        let requestClosure = { (endpoint: Endpoint, done: MoyaProvider.RequestResultClosure) in
+            var request: URLRequest = try! endpoint.urlRequest()
+            // this is the important line
+            request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+            done(.success(request))
+        }
+        provider = MoyaProvider(requestClosure: requestClosure)
     }
     
     func rovers() -> Observable<[Rover]> {
@@ -35,7 +43,7 @@ class NASARoverApi: MarsRoverApi {
                 .rx
                 .request(token)
                 .asObservable()
-            return serializer.serializeArrayFromDict(rootKey: "rovers", response)
+            return serializer.serializeArrayFromDict(rootKey: "photos", response)
         }
         
     }

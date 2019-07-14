@@ -1,4 +1,6 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
+
+use_frameworks!
 
 inhibit_all_warnings!
 
@@ -12,4 +14,5 @@ target 'DoomPrequel' do
     pod 'RxDataSources'
     pod 'SnapKit'
     pod 'RxKingfisher'
+    pod 'SimpleImageViewer', '~> 1.1.1'
 end

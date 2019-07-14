@@ -20,6 +20,11 @@ class PhotosVM {
     private lazy var pageLoader: PageLoader<Photo> = self.createPageLoader()
     private var photos: BehaviorRelay<[Photo]> = .init(value: [])
     
+    private var apiError: BehaviorRelay<Error?> = .init(value: nil)
+    var errorObservable: Observable<Error> {
+        return apiError.compactMap({ $0 }).asObservable()
+    }
+    
     var photosObservable: Observable<[Photo]> {
         return photos.asObservable().observeOn(MainScheduler.instance)
     }
@@ -30,7 +35,7 @@ class PhotosVM {
         self.rover = rover
         self.router = router
         
-        
+        loadNewPage()
     }
     
     func backToRoverSelection() {
@@ -44,7 +49,12 @@ class PhotosVM {
     func loadNewPage() {
         pageLoader
             .newPage()
-            .bind(onNext: {[weak self] photos in
+            .filter{ !$0.isEmpty }
+            .asDriver(onErrorRecover: {[weak self] error in
+                self?.apiError.accept(error)
+                return .just([])
+            }) 
+            .drive(onNext: {[weak self] photos in
                 guard var oldPhotos = self?.photos.value else {
                     return
                 }
@@ -59,6 +69,12 @@ class PhotosVM {
         if row == photosLoaded - 1 {
             loadNewPage()
         }
+    }
+    
+    private func resetPageLoader() {
+        photos.accept([])
+        pageLoader = createPageLoader()
+        loadNewPage()
     }
     
     var cameras: [Camera] {
@@ -81,20 +97,24 @@ class PhotosVM {
         return rover.name
     }
     
-    private var selectedDate: Date {
+   
+    
+    
+    var selectedDate: Date {
         get {
             guard let date = userCache.selectedDate(for: rover) else {
-                userCache.selected(date: maxDate, for: rover)
-                return maxDate
+                userCache.selected(date: landingDate, for: rover)
+                return landingDate
             }
             return date
         }
         set {
             userCache.selected(date: newValue, for: rover)
+            resetPageLoader()
         }
     }
     
-    private var selectedCamera: Camera {
+    var selectedCamera: Camera {
         get {
             guard let camera = userCache.selectedCamera(for: rover) else {
                 guard let camera = cameras.first else {
@@ -112,6 +132,7 @@ class PhotosVM {
         }
         set {
             userCache.selected(camera: newValue, for: rover)
+            resetPageLoader()
         }
     }
 }

@@ -17,7 +17,7 @@ class PageLoader<T> {
     
     private(set) var page: Int = 0
     
-    
+    private var endReached: Bool = false
     
     init(params: RequestParameters, requestExecutor: @escaping (RequestParameters) -> Observable<[T]>) {
         self.requestParameters = params
@@ -25,10 +25,15 @@ class PageLoader<T> {
     }
     
     func newPage() -> Observable<[T]> {
+        guard !endReached else {
+            return .just([])
+        }
         requestParameters.integrate(value: page, for: "page")
         return requestExecutor(requestParameters)
             .do(onNext: { [weak self] result in
-                if !result.isEmpty {
+                if result.count < 25  {
+                    self?.endReached = true
+                } else {
                     self?.page += 1
                 }
             })
@@ -36,5 +41,6 @@ class PageLoader<T> {
     
     func reset() {
         page = 0
+        endReached = false
     }
 }

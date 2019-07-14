@@ -31,6 +31,7 @@ class DPViewController : UIViewController {
     
     private func setupBackground() {
         let background = UIImageView(image: UIImage(named: "background")!)
+        background.contentMode = .scaleAspectFill
         view.addSubview(background)
         background.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B43EB569ACD9E33488E0AB0 /* libPods-DoomPrequel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C1BA950E8E973BFFFF5F8C /* libPods-DoomPrequel.a */; };
+		E4E7A303944CA8EA74989884 /* Pods_DoomPrequel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4185C224BCC718926CD2F297 /* Pods_DoomPrequel.framework */; };
 		E818D23222D6844900231262 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23122D6844900231262 /* Camera.swift */; };
 		E818D23522D684DA00231262 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23422D684DA00231262 /* Rover.swift */; };
 		E85934E422C3630300333824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934E322C3630300333824 /* AppDelegate.swift */; };
@@ -49,6 +49,7 @@
 		E884405022D8F8ED00E5A5AE /* DPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884404F22D8F8ED00E5A5AE /* DPViewController.swift */; };
 		E884405322D8FD8F00E5A5AE /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884405122D8FD8F00E5A5AE /* PhotoCell.swift */; };
 		E884405422D8FD8F00E5A5AE /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E884405222D8FD8F00E5A5AE /* PhotoCell.xib */; };
+		E884405622D92AAE00E5A5AE /* PDPickersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884405522D92AAD00E5A5AE /* PDPickersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		67C1BA950E8E973BFFFF5F8C /* libPods-DoomPrequel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoomPrequel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4185C224BCC718926CD2F297 /* Pods_DoomPrequel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoomPrequel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFDC18FC8079AC4DC7E0FA1 /* Pods-DoomPrequel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoomPrequel.release.xcconfig"; path = "Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel.release.xcconfig"; sourceTree = "<group>"; };
 		DA36CF0BD46481100C659B4B /* Pods-DoomPrequel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoomPrequel.debug.xcconfig"; path = "Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel.debug.xcconfig"; sourceTree = "<group>"; };
 		E818D23122D6844900231262 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		E884404F22D8F8ED00E5A5AE /* DPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPViewController.swift; sourceTree = "<group>"; };
 		E884405122D8FD8F00E5A5AE /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		E884405222D8FD8F00E5A5AE /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		E884405522D92AAD00E5A5AE /* PDPickersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDPickersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B43EB569ACD9E33488E0AB0 /* libPods-DoomPrequel.a in Frameworks */,
+				E4E7A303944CA8EA74989884 /* Pods_DoomPrequel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +136,7 @@
 		5741194490321C9C8EABA3B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				67C1BA950E8E973BFFFF5F8C /* libPods-DoomPrequel.a */,
+				4185C224BCC718926CD2F297 /* Pods_DoomPrequel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,6 +261,7 @@
 				E884403322D8D35F00E5A5AE /* PhotosModule.swift */,
 				E884405122D8FD8F00E5A5AE /* PhotoCell.swift */,
 				E884405222D8FD8F00E5A5AE /* PhotoCell.xib */,
+				E884405522D92AAD00E5A5AE /* PDPickersView.swift */,
 			);
 			path = PhotosScreen;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				E85934DC22C3630300333824 /* Sources */,
 				E85934DD22C3630300333824 /* Frameworks */,
 				E85934DE22C3630300333824 /* Resources */,
+				3A39E3E36F899B5CF33BBEED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -424,6 +428,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3A39E3E36F899B5CF33BBEED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AA07D9D01A536EC6CA136C31 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,6 +503,7 @@
 				E884401922D7F77300E5A5AE /* UserCache.swift in Sources */,
 				E8843FFE22D7D69E00E5A5AE /* ApiClient.swift in Sources */,
 				E884405022D8F8ED00E5A5AE /* DPViewController.swift in Sources */,
+				E884405622D92AAE00E5A5AE /* PDPickersView.swift in Sources */,
 				E884402C22D8CE1300E5A5AE /* Animator.swift in Sources */,
 				E884401122D7F38200E5A5AE /* NASASerializer.swift in Sources */,
 				E884403222D8D23F00E5A5AE /* RoverSelectionModule.swift in Sources */,
