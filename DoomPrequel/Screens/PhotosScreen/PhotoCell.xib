@@ -25,6 +25,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9d0-36-MA4">
                         <rect key="frame" x="0.0" y="0.0" width="366" height="286.5"/>
                         <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="F92-3f-PyA"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="UhD-6r-5vP"/>
                         </constraints>
                     </button>

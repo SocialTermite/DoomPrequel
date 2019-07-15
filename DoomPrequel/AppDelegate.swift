@@ -13,12 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
-        let module = RoverSelectionModule.module()
-        let navigationController = UINavigationController(rootViewController: module)
+        DIContainer.shared.registerDependencies()
+        let navigationController = UINavigationController(rootViewController: DIContainer.shared.roverSelectionVC())
         self.window = window
         
         self.window?.rootViewController = navigationController

@@ -15,4 +15,6 @@ target 'DoomPrequel' do
     pod 'SnapKit'
     pod 'RxKingfisher'
     pod 'SimpleImageViewer', '~> 1.1.1'
+    pod 'JGProgressHUD'
+    pod 'Toast-Swift', '~> 5.0.0'
 end

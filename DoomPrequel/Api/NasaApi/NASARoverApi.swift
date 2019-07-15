@@ -28,7 +28,7 @@ class NASARoverApi: MarsRoverApi {
     
     func rovers() -> Observable<[Rover]> {
         let response = provider.rx.request(.rovers).asObservable()
-        return serializer.serializeArrayFromDict(rootKey: "rovers", response)
+        return serializer.serializeArrayFromDict(rootKey: Constants.API.ResponseRootKey.rovers.rawValue, response)
     }
 
     func photos(for rover: Rover, with camera: Camera, at date: Date) -> PageLoader<Photo> {
@@ -43,7 +43,7 @@ class NASARoverApi: MarsRoverApi {
                 .rx
                 .request(token)
                 .asObservable()
-            return serializer.serializeArrayFromDict(rootKey: "photos", response)
+            return serializer.serializeArrayFromDict(rootKey: Constants.API.ResponseRootKey.photos.rawValue, response)
         }
         
     }

@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		E4E7A303944CA8EA74989884 /* Pods_DoomPrequel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4185C224BCC718926CD2F297 /* Pods_DoomPrequel.framework */; };
 		E818D23222D6844900231262 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23122D6844900231262 /* Camera.swift */; };
 		E818D23522D684DA00231262 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23422D684DA00231262 /* Rover.swift */; };
+		E8203AD322DC9BD60079EEF9 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AD222DC9BD60079EEF9 /* DIContainer.swift */; };
 		E85934E422C3630300333824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934E322C3630300333824 /* AppDelegate.swift */; };
 		E85934E622C3630300333824 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934E522C3630300333824 /* ViewController.swift */; };
 		E85934EB22C3630400333824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85934EA22C3630400333824 /* Assets.xcassets */; };
@@ -37,7 +38,6 @@
 		E884402C22D8CE1300E5A5AE /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884402B22D8CE1300E5A5AE /* Animator.swift */; };
 		E884402E22D8CE3700E5A5AE /* PushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884402D22D8CE3700E5A5AE /* PushTransition.swift */; };
 		E884403022D8D06300E5A5AE /* RoverSelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884402F22D8D06300E5A5AE /* RoverSelectionRouter.swift */; };
-		E884403222D8D23F00E5A5AE /* RoverSelectionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884403122D8D23F00E5A5AE /* RoverSelectionModule.swift */; };
 		E884403422D8D35F00E5A5AE /* PhotosModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884403322D8D35F00E5A5AE /* PhotosModule.swift */; };
 		E884403622D8D46600E5A5AE /* PhotosRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884403522D8D46600E5A5AE /* PhotosRoute.swift */; };
 		E884403822D8D62E00E5A5AE /* PhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884403722D8D62E00E5A5AE /* PhotosVC.swift */; };
@@ -68,6 +68,7 @@
 		DA36CF0BD46481100C659B4B /* Pods-DoomPrequel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoomPrequel.debug.xcconfig"; path = "Target Support Files/Pods-DoomPrequel/Pods-DoomPrequel.debug.xcconfig"; sourceTree = "<group>"; };
 		E818D23122D6844900231262 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		E818D23422D684DA00231262 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
+		E8203AD222DC9BD60079EEF9 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		E85934E022C3630300333824 /* DoomPrequel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoomPrequel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85934E322C3630300333824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E85934E522C3630300333824 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		E884402B22D8CE1300E5A5AE /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		E884402D22D8CE3700E5A5AE /* PushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTransition.swift; sourceTree = "<group>"; };
 		E884402F22D8D06300E5A5AE /* RoverSelectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverSelectionRouter.swift; sourceTree = "<group>"; };
-		E884403122D8D23F00E5A5AE /* RoverSelectionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverSelectionModule.swift; sourceTree = "<group>"; };
 		E884403322D8D35F00E5A5AE /* PhotosModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModule.swift; sourceTree = "<group>"; };
 		E884403522D8D46600E5A5AE /* PhotosRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRoute.swift; sourceTree = "<group>"; };
 		E884403722D8D62E00E5A5AE /* PhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVC.swift; sourceTree = "<group>"; };
@@ -160,6 +160,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E8203AD122DC9BC00079EEF9 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				E8203AD222DC9BD60079EEF9 /* DIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
 		E85934D722C3630300333824 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +191,7 @@
 		E85934E222C3630300333824 /* DoomPrequel */ = {
 			isa = PBXGroup;
 			children = (
+				E8203AD122DC9BC00079EEF9 /* DIContainer */,
 				E884403C22D8EAAC00E5A5AE /* Resources */,
 				E884401722D7F76400E5A5AE /* Storage */,
 				E818D23322D684CA00231262 /* Models */,
@@ -238,7 +247,6 @@
 				E884401522D7F51700E5A5AE /* RoverSelectionVM.swift */,
 				E884401E22D896DF00E5A5AE /* RoverSelectionVC.swift */,
 				E884402F22D8D06300E5A5AE /* RoverSelectionRouter.swift */,
-				E884403122D8D23F00E5A5AE /* RoverSelectionModule.swift */,
 				E884402022D8A2A300E5A5AE /* Cells */,
 			);
 			path = RoverSelectionScreen;
@@ -496,6 +504,7 @@
 				E884400622D7D95B00E5A5AE /* Constants.swift in Sources */,
 				E884405322D8FD8F00E5A5AE /* PhotoCell.swift in Sources */,
 				E818D23522D684DA00231262 /* Rover.swift in Sources */,
+				E8203AD322DC9BD60079EEF9 /* DIContainer.swift in Sources */,
 				E85934E622C3630300333824 /* ViewController.swift in Sources */,
 				E884402922D8CDD000E5A5AE /* Transition.swift in Sources */,
 				E85934E422C3630300333824 /* AppDelegate.swift in Sources */,
@@ -506,7 +515,6 @@
 				E884405622D92AAE00E5A5AE /* PDPickersView.swift in Sources */,
 				E884402C22D8CE1300E5A5AE /* Animator.swift in Sources */,
 				E884401122D7F38200E5A5AE /* NASASerializer.swift in Sources */,
-				E884403222D8D23F00E5A5AE /* RoverSelectionModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

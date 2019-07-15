@@ -13,13 +13,15 @@ enum NASAService: TargetType {
     case photos(PhotosRequestParameters)
     
     public var baseURL: URL {
-        return URL(string: "https://api.nasa.gov/mars-photos/api/v1")!
+        return Constants.API.url
     }
     
     public var path: String {
+        let rovers = "\(Constants.API.Path.rovers)"
+        let photos = "\(Constants.API.Path.photos)"
         switch self {
-        case .rovers: return "/rovers"
-        case .photos(let parameters): return "/rovers/\(parameters.roverName.lowercased())/photos"
+        case .rovers: return "/\(rovers)"
+        case .photos(let parameters): return "/\(rovers)/\(parameters.roverName.lowercased())/\(photos)"
         }
     }
     
@@ -36,7 +38,7 @@ enum NASAService: TargetType {
     }
     
     public var task: Task  {
-        var requestParameters: JSON = ["api_key": NASAService.apiKey]
+        var requestParameters: JSON = [Constants.API.Parameters.apiKey.rawValue: Constants.API.Parameters.NASAKey]
         switch self {
         case .rovers:
             return .requestParameters(parameters: requestParameters, encoding: URLEncoding.queryString)
@@ -49,8 +51,6 @@ enum NASAService: TargetType {
     public var headers: [String : String]? {
         return ["Content-Type": "application/json"]
     }
-    
-    static private let apiKey = "rfFEHRMpDhqQ8nXM9zyuObcA8glQ8ZJFoXQ8Qi7O"
 }
 
 extension Dictionary {

@@ -16,12 +16,16 @@ class RoverSelectionVM {
     private let userCache: UserCache
     private let trash = DisposeBag()
     private let router: PhotosRoute
-    var rovers: BehaviorRelay<[Rover]> = .init(value: [])
+    private var rovers: BehaviorRelay<[Rover]> = .init(value: [])
     private var apiError: BehaviorRelay<Error?> = .init(value: nil)
-    var errorObservable: Observable<Error> {
-        return apiError.compactMap({ $0 }).asObservable()
+    
+    var roversObservable: Observable<[Rover]> {
+        return rovers.skip(1).asObservable().observeOn(MainScheduler.instance)
     }
     
+    var errorObservable: Observable<Error> {
+        return apiError.compactMap({ $0 }).asObservable().observeOn(MainScheduler.instance)
+    }
     
     init(api: ApiClient, userCache: UserCache, photosRoute: PhotosRoute) {
         self.api = api
@@ -32,7 +36,6 @@ class RoverSelectionVM {
     
     private func setupRx() {
         api.rovers()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInitiated))
             .asDriver(onErrorRecover: {[weak self] error in
                 self?.apiError.accept(error)
                 return .just([])

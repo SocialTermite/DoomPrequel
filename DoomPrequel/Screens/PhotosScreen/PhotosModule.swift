@@ -12,13 +12,8 @@ class PhotosModule {
     var viewController: PhotosVC
     var router: PhotosRouter
     init(rover: Rover) {
-        router = PhotosRouter()
-        let serializer = NASASerializer()
-        let marsRoverApi = NASARoverApi(serializer: serializer)
-        let apiClient = ApiClient(roverApi: marsRoverApi)
-        let viewModel = PhotosVM(api: apiClient, userCache: UserCache(), rover: rover, router: router)
-        viewController = PhotosVC(viewModel: viewModel)
-        
-        self.router.viewController = viewController
+        viewController = DIContainer.shared.photosVC(for: rover)
+        router = DIContainer.shared.photosRouter()
+        router.viewController = viewController
     }
 }

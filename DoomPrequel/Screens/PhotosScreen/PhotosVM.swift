@@ -26,7 +26,7 @@ class PhotosVM {
     }
     
     var photosObservable: Observable<[Photo]> {
-        return photos.asObservable().observeOn(MainScheduler.instance)
+        return photos.asDriver(onErrorJustReturn: []).asObservable()
     }
     
     init(api: ApiClient, userCache: UserCache, rover: Rover, router: PhotosRouter) {
@@ -46,10 +46,19 @@ class PhotosVM {
         return api.photos(for: rover, with: selectedCamera, at: selectedDate)
     }
     
+    private var isLoading: BehaviorRelay<Bool> = .init(value: false)
+    
+    var isLoadingObservable: Observable<Bool> {
+        return isLoading.skip(1).observeOn(MainScheduler.instance)
+    }
+    
     func loadNewPage() {
+        guard !pageLoader.endReached else {
+            return
+        }
+        isLoading.accept(true)
         pageLoader
             .newPage()
-            .filter{ !$0.isEmpty }
             .asDriver(onErrorRecover: {[weak self] error in
                 self?.apiError.accept(error)
                 return .just([])
@@ -60,6 +69,7 @@ class PhotosVM {
                 }
                 oldPhotos.append(contentsOf: photos)
                 self?.photos.accept(oldPhotos)
+                self?.isLoading.accept(false)
             })
             .disposed(by: trash)
     }
@@ -96,10 +106,7 @@ class PhotosVM {
     var roverName: String {
         return rover.name
     }
-    
-   
-    
-    
+
     var selectedDate: Date {
         get {
             guard let date = userCache.selectedDate(for: rover) else {

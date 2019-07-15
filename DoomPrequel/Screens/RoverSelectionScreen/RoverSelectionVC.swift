@@ -10,10 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import JGProgressHUD
+import Toast_Swift
 
 class RoverSelectionVC : DPViewController {
     private let viewModel: RoverSelectionVM
-
+    private let hud: JGProgressHUD = JGProgressHUD(style: .dark)
     init(viewModel: RoverSelectionVM) {
         self.viewModel = viewModel
         super.init()
@@ -25,15 +27,16 @@ class RoverSelectionVC : DPViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
+        hud.show(in: tableView)
         setupTableViewSource()
+        
     }
 
     private func setupUI() {
         view.addSubview(selectLabel)
         selectLabel.snp.makeConstraints { (maker) in
-            maker.top.equalTo(100)
+            maker.top.equalTo(75)
             maker.centerX.equalToSuperview()
             maker.left.greaterThanOrEqualTo(15)
             maker.right.lessThanOrEqualTo(15)
@@ -42,18 +45,28 @@ class RoverSelectionVC : DPViewController {
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(selectLabel.snp.bottom).offset(100)
+            maker.top.equalTo(selectLabel.snp.bottom).offset(75)
             maker.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     private func setupTableViewSource() {
         
-        tableView.register(UINib(nibName: "RoverCell", bundle: nil), forCellReuseIdentifier: "RoverCell")
+        tableView.register(UINib(nibName: Constants.TableView.CellIdentifier.rover.rawValue, bundle: nil), forCellReuseIdentifier: Constants.TableView.CellIdentifier.rover.rawValue)
         
-        viewModel
-            .rovers
-            .bind(to: tableView.rx.items(cellIdentifier: "RoverCell", cellType: RoverCell.self)) { row, element, cell in
+        let rovers = viewModel
+            .roversObservable
+            .debug()
+            .share()
+        
+        rovers
+            .subscribe(onNext: { [hud] _ in
+                hud.dismiss()
+            })
+            .disposed(by: trash)
+            
+        rovers
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.TableView.CellIdentifier.rover.rawValue, cellType: RoverCell.self)) { row, element, cell in
                 cell.setup(with: element)
             }
             .disposed(by: trash)
@@ -65,13 +78,22 @@ class RoverSelectionVC : DPViewController {
                 self?.viewModel.userSelected(element)
             })
             .disposed(by: trash)
+        viewModel
+            .errorObservable
+            .subscribe(onNext: {[weak self] error in
+                guard let view = self?.view else {
+                    return
+                }
+                view.makeToast("\(Constants.Text.errorText.localized()) - \(error.localizedDescription)", duration: 3, point: view.center, title: Constants.Text.errorTitle.localized(), image: nil, style: ToastStyle.default(), completion: nil)
+            })
+            .disposed(by: trash)
     }
     
     private var selectLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.init(name: "NotoSerif", size: 22)
+        label.font = Constants.Font.h1.font()
         label.numberOfLines = 0
-        label.text = "Select Rover,\n to start exploring mars photos"
+        label.text = Constants.Text.selectRover.localized()
         label.textColor = .white
         label.textAlignment = .center
         return label
@@ -103,5 +125,13 @@ extension UIView {
     func addSubview(_ view: UIView, maker: (ConstraintMaker) -> Void) {
         self.addSubview(view)
         self.snp.makeConstraints(maker)
+    }
+}
+
+extension ToastStyle {
+    static func `default`() -> ToastStyle {
+        var style = ToastStyle()
+        style.titleAlignment = .center
+        return style
     }
 }

@@ -17,7 +17,7 @@ class PageLoader<T> {
     
     private(set) var page: Int = 0
     
-    private var endReached: Bool = false
+    private(set) var endReached: Bool = false
     
     init(params: RequestParameters, requestExecutor: @escaping (RequestParameters) -> Observable<[T]>) {
         self.requestParameters = params
@@ -28,10 +28,10 @@ class PageLoader<T> {
         guard !endReached else {
             return .just([])
         }
-        requestParameters.integrate(value: page, for: "page")
+        requestParameters.integrate(value: page, for: Constants.API.Parameters.page.rawValue)
         return requestExecutor(requestParameters)
             .do(onNext: { [weak self] result in
-                if result.count < 25  {
+                if result.count < Constants.API.pageLimit {
                     self?.endReached = true
                 } else {
                     self?.page += 1

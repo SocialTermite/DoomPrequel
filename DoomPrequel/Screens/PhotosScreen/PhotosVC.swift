@@ -10,11 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SimpleImageViewer
-
+import JGProgressHUD
 
 class PhotosVC : DPViewController {
     private let viewModel: PhotosVM
 
+    private let hud = JGProgressHUD(style: .dark)
     init(viewModel: PhotosVM) {
         self.viewModel = viewModel
         super.init()
@@ -32,16 +33,37 @@ class PhotosVC : DPViewController {
     }
     
     private func setupTableViewSource() {
-        tableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
+        tableView.register(UINib(nibName: Constants.TableView.CellIdentifier.photo.rawValue, bundle: nil), forCellReuseIdentifier: Constants.TableView.CellIdentifier.photo.rawValue)
         
         viewModel
+            .isLoadingObservable
+            .subscribe(onNext: {[hud, tableView, emptyResultLabel] isLoading in
+                if isLoading {
+                    hud.show(in: tableView)
+                    emptyResultLabel.isHidden = true
+                } else {
+                    hud.dismiss()
+                }
+            })
+            .disposed(by: trash)
+        let photos = viewModel
             .photosObservable
-            .bind(to: tableView.rx.items(cellIdentifier: "PhotoCell", cellType: PhotoCell.self)) {[weak self] row, photo, cell in
+            .share()
+        photos
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.TableView.CellIdentifier.photo.rawValue, cellType: PhotoCell.self)) {[weak self] row, photo, cell in
                 cell.setup(with: photo)
+                cell.isDownloaded = {
+                    //self?.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+                }
                 self?.viewModel.rowPresented(row)
                 self?.showFullscreenByTap(in: cell)
                 
             }
+            .disposed(by: trash)
+        
+        photos
+            .map { !$0.isEmpty }
+            .bind(to: emptyResultLabel.rx.isHidden)
             .disposed(by: trash)
         
     }
@@ -62,22 +84,18 @@ class PhotosVC : DPViewController {
     }
     
     private func setupUI() {
+        view.addSubview(emptyResultLabel)
+        emptyResultLabel.snp.makeConstraints { (maker) in
+            maker.center.equalToSuperview()
+        }
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
             maker.edges.equalToSuperview()
         }
         
+        
         let pickersView = DPPickersView(cameras: viewModel.cameras, minimumDate: viewModel.landingDate, maximumDate: viewModel.maxDate, selectedCamera: viewModel.selectedCamera, selectedDate: viewModel.selectedDate)
-        pickersView
-            .installPicker
-            .compactMap { $0 }
-            .subscribe(onNext: {[weak self] pickerView in
-                self?.view.addSubview(pickerView)
-                pickerView.snp.makeConstraints({ (maker) in
-                    maker.leading.trailing.bottom.equalToSuperview()
-                })
-            })
-            .disposed(by: trash)
         
         pickersView
             .selectedCameraObservable
@@ -92,6 +110,15 @@ class PhotosVC : DPViewController {
                 self?.viewModel.selectedDate = date
             })
             .disposed(by: trash)
+        
+        tableView
+            .rx
+            .didScroll
+            .map { pickersView.isPresenting() }
+            .filter { $0 }
+            .subscribe(onNext: { _ in pickersView.dissmiss() })
+            .disposed(by: trash)
+        
         view.addSubview(pickersView)
         
         pickersView.snp.makeConstraints { (maker) in
@@ -100,14 +127,18 @@ class PhotosVC : DPViewController {
         }
     }
     
-    private lazy var collectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private var emptyResultLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = Constants.Text.emptyResult.localized()
+        label.font = Constants.Font.h2.font()
+        label.textColor = .white
+        return label
     }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
-        tableView.estimatedRowHeight = 40
+        tableView.estimatedRowHeight = 100
         tableView.tableFooterView = UIView()
         tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
         tableView.rowHeight = UITableView.automaticDimension
@@ -118,13 +149,13 @@ class PhotosVC : DPViewController {
         navigationController?.navigationBar.installBlurEffect()
         
         navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Rover", style: .plain, target: self, action: #selector(roverButtonTapped))
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "NotoSerif", size: 16)!], for: .normal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: Constants.Text.rover.localized(), style: .plain, target: self, action: #selector(roverButtonTapped))
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([.font: Constants.Font.h2.font()], for: .normal)
         navigationItem.title = viewModel.roverName
         
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white,
-                                                            NSAttributedString.Key.font: UIFont(name: "NotoSerif", size: 22)!]
+                                                            NSAttributedString.Key.font: Constants.Font.h1.font()]
     }
     
     @objc private func roverButtonTapped() {
