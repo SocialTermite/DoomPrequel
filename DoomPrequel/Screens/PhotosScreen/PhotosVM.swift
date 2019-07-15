@@ -11,22 +11,29 @@ import RxSwift
 import RxCocoa
 
 class PhotosVM {
+    private let trash = DisposeBag()
+    
     private let api: ApiClient
     private let userCache: UserCache
     private let rover: Rover
     private let router: PhotosRouter
-    private let trash = DisposeBag()
-    
+
     private lazy var pageLoader: PageLoader<Photo> = self.createPageLoader()
-    private var photos: BehaviorRelay<[Photo]> = .init(value: [])
     
+    private var photos: BehaviorRelay<[Photo]> = .init(value: [])
     private var apiError: BehaviorRelay<Error?> = .init(value: nil)
-    var errorObservable: Observable<Error> {
-        return apiError.compactMap({ $0 }).asObservable()
-    }
+    private var isLoading: BehaviorRelay<Bool> = .init(value: false)
     
     var photosObservable: Observable<[Photo]> {
-        return photos.asDriver(onErrorJustReturn: []).asObservable()
+        return photos.asDriver(onErrorJustReturn: []).asObservable().observeOn(MainScheduler.instance)
+    }
+    
+    var errorObservable: Observable<Error> {
+        return apiError.compactMap({ $0 }).asObservable().observeOn(MainScheduler.instance)
+    }
+    
+    var isLoadingObservable: Observable<Bool> {
+        return isLoading.skip(1).observeOn(MainScheduler.instance).observeOn(MainScheduler.instance)
     }
     
     init(api: ApiClient, userCache: UserCache, rover: Rover, router: PhotosRouter) {
@@ -46,17 +53,13 @@ class PhotosVM {
         return api.photos(for: rover, with: selectedCamera, at: selectedDate)
     }
     
-    private var isLoading: BehaviorRelay<Bool> = .init(value: false)
-    
-    var isLoadingObservable: Observable<Bool> {
-        return isLoading.skip(1).observeOn(MainScheduler.instance)
-    }
-    
     func loadNewPage() {
         guard !pageLoader.endReached else {
             return
         }
+        
         isLoading.accept(true)
+        
         pageLoader
             .newPage()
             .asDriver(onErrorRecover: {[weak self] error in
@@ -97,10 +100,6 @@ class PhotosVM {
     
     var maxDate: Date {
         return rover.maxDate
-    }
-    
-    var maxSol: Int {
-        return rover.maxSOL
     }
     
     var roverName: String {

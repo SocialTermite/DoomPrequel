@@ -21,10 +21,11 @@ class RoverCell: UITableViewCell {
     
     func setup(with rover: Rover) {
         nameLabel.text = rover.name
-        launchDateLabel.text = "\(Constants.Text.launchDate.localized()): \(DPDateFormatters.default.string(from: rover.launchDate))"
-        landingLabel.text = "\(Constants.Text.landingDate.localized()): \(DPDateFormatters.default.string(from: rover.landingDate))"
+        launchDateLabel.text = "\(Constants.Text.launchDate.localized()): \(rover.launchDate.string()))"
+        landingLabel.text = "\(Constants.Text.landingDate.localized()): \(rover.landingDate.string()))"
         statusLabel.text = "\(Constants.Text.status.localized()): \(rover.status)"
         totalPhotosLabel.text = "\(Constants.Text.totalPhotos.localized()): \(rover.totalPhotos)"
+        
         setHardcoderImages(for: rover)
     }
     

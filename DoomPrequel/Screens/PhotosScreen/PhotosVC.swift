@@ -16,6 +16,7 @@ class PhotosVC : DPViewController {
     private let viewModel: PhotosVM
 
     private let hud = JGProgressHUD(style: .dark)
+    
     init(viewModel: PhotosVM) {
         self.viewModel = viewModel
         super.init()
@@ -29,11 +30,31 @@ class PhotosVC : DPViewController {
         super.viewDidLoad()
         setupNavBar()
         setupUI()
-        setupTableViewSource()
+        setupRx()
+        setupPickersView()
     }
     
-    private func setupTableViewSource() {
-        tableView.register(UINib(nibName: Constants.TableView.CellIdentifier.photo.rawValue, bundle: nil), forCellReuseIdentifier: Constants.TableView.CellIdentifier.photo.rawValue)
+    private func setupRx() {
+        let photos = viewModel
+            .photosObservable
+            .share()
+        
+        photos
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.TableView.CellIdentifier.photo.rawValue, cellType: PhotoCell.self)) {[weak self] row, photo, cell in
+                cell.setup(with: photo)
+                self?.viewModel.rowPresented(row)
+                self?.showFullscreenByTap(in: cell)
+                //maybe its resolve small images after loading...
+//                cell.isDownloaded = {
+//                    self?.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+//                }
+            }
+            .disposed(by: trash)
+        
+        photos
+            .map { !$0.isEmpty }
+            .bind(to: emptyResultLabel.rx.isHidden)
+            .disposed(by: trash)
         
         viewModel
             .isLoadingObservable
@@ -46,41 +67,6 @@ class PhotosVC : DPViewController {
                 }
             })
             .disposed(by: trash)
-        let photos = viewModel
-            .photosObservable
-            .share()
-        photos
-            .bind(to: tableView.rx.items(cellIdentifier: Constants.TableView.CellIdentifier.photo.rawValue, cellType: PhotoCell.self)) {[weak self] row, photo, cell in
-                cell.setup(with: photo)
-                cell.isDownloaded = {
-                    //self?.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
-                }
-                self?.viewModel.rowPresented(row)
-                self?.showFullscreenByTap(in: cell)
-                
-            }
-            .disposed(by: trash)
-        
-        photos
-            .map { !$0.isEmpty }
-            .bind(to: emptyResultLabel.rx.isHidden)
-            .disposed(by: trash)
-        
-    }
-    
-    private func showFullscreenByTap(in cell: PhotoCell) {
-        cell
-            .tabObservable
-            .subscribe(onNext: {[weak self] _ in
-                let configuration = ImageViewerConfiguration { config in
-                    config.imageView = cell.photoImageView
-                }
-                
-                let imageViewerController = ImageViewerController(configuration: configuration)
-                
-                self?.present(imageViewerController, animated: true)
-            })
-            .disposed(by: self.trash)
     }
     
     private func setupUI() {
@@ -94,8 +80,18 @@ class PhotosVC : DPViewController {
             maker.edges.equalToSuperview()
         }
         
-        
+        tableView.register(UINib(nibName: Constants.TableView.CellIdentifier.photo.rawValue, bundle: nil),
+                           forCellReuseIdentifier: Constants.TableView.CellIdentifier.photo.rawValue)
+    }
+    
+    private func setupPickersView() {
         let pickersView = DPPickersView(cameras: viewModel.cameras, minimumDate: viewModel.landingDate, maximumDate: viewModel.maxDate, selectedCamera: viewModel.selectedCamera, selectedDate: viewModel.selectedDate)
+        
+        view.addSubview(pickersView)
+        pickersView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            maker.leading.trailing.equalToSuperview()
+        }
         
         pickersView
             .selectedCameraObservable
@@ -118,13 +114,21 @@ class PhotosVC : DPViewController {
             .filter { $0 }
             .subscribe(onNext: { _ in pickersView.dissmiss() })
             .disposed(by: trash)
-        
-        view.addSubview(pickersView)
-        
-        pickersView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            maker.leading.trailing.equalToSuperview()
-        }
+    }
+    
+    private func showFullscreenByTap(in cell: PhotoCell) {
+        cell
+            .tabObservable
+            .subscribe(onNext: {[weak self] _ in
+                let configuration = ImageViewerConfiguration { config in
+                    config.imageView = cell.photoImageView
+                }
+                
+                let imageViewerController = ImageViewerController(configuration: configuration)
+                
+                self?.present(imageViewerController, animated: true)
+            })
+            .disposed(by: self.trash)
     }
     
     private var emptyResultLabel: UILabel = {
@@ -149,7 +153,8 @@ class PhotosVC : DPViewController {
         navigationController?.navigationBar.installBlurEffect()
         
         navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: Constants.Text.rover.localized(), style: .plain, target: self, action: #selector(roverButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: Constants.Text.rover.localized(),
+                                                           style: .plain, target: self, action: #selector(roverButtonTapped))
         navigationItem.leftBarButtonItem?.setTitleTextAttributes([.font: Constants.Font.h2.font()], for: .normal)
         navigationItem.title = viewModel.roverName
         

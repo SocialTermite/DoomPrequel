@@ -24,7 +24,9 @@ extension NASAService {
         private var _parameters: JSON = [:]
         var parameters: JSON {
             var result = _parameters
-            result[Constants.API.Parameters.date.rawValue] = DPDateFormatters.default.string(from: date)
+            
+            result[Constants.API.Parameters.date.rawValue] = Constants.Date.Formatters.default.formatter().string(from: date)
+            
             result[Constants.API.Parameters.camera.rawValue] = camera.lowercased()
             
             return result

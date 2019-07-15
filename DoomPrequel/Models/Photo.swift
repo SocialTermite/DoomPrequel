@@ -22,7 +22,7 @@ extension Photo: Codable {
     }
     
     func encode(to encoder: Encoder) throws {
-        let formatter = DPDateFormatters.default
+        let formatter = Constants.Date.Formatters.default.formatter()
         var container = encoder.container(keyedBy: PhotoCodingKey.self)
         try container.encode(sol, forKey: .sol)
         try container.encode(formatter.string(from: date), forKey: .date)
@@ -37,6 +37,6 @@ extension Photo: Codable {
         
         let dateString = try container.decode(String.self, forKey: .date)
 
-        date = DPDateFormatters.default.date(from: dateString) ?? Date()
+        date = Constants.Date.Formatters.default.formatter().date(from: dateString) ?? Date()
     }
 }

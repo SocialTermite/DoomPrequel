@@ -11,8 +11,16 @@
 		E818D23222D6844900231262 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23122D6844900231262 /* Camera.swift */; };
 		E818D23522D684DA00231262 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D23422D684DA00231262 /* Rover.swift */; };
 		E8203AD322DC9BD60079EEF9 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AD222DC9BD60079EEF9 /* DIContainer.swift */; };
+		E8203AD722DCB6EB0079EEF9 /* Constants+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AD622DCB6EB0079EEF9 /* Constants+API.swift */; };
+		E8203AD922DCB7060079EEF9 /* Constants+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AD822DCB7060079EEF9 /* Constants+Date.swift */; };
+		E8203ADB22DCB7180079EEF9 /* Constants+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203ADA22DCB7180079EEF9 /* Constants+Text.swift */; };
+		E8203ADD22DCB9410079EEF9 /* ObservableType+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203ADC22DCB9410079EEF9 /* ObservableType+Additions.swift */; };
+		E8203ADF22DCB9AB0079EEF9 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203ADE22DCB9AB0079EEF9 /* Dictionary+Additions.swift */; };
+		E8203AE122DCBAD50079EEF9 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AE022DCBAD50079EEF9 /* UIViewController+Additions.swift */; };
+		E8203AE322DCBB650079EEF9 /* Toast+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AE222DCBB650079EEF9 /* Toast+Additions.swift */; };
+		E8203AE722DCC0D70079EEF9 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AE622DCC0D70079EEF9 /* Date+Additions.swift */; };
+		E8203AE922DCC0EF0079EEF9 /* UIView+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8203AE822DCC0EF0079EEF9 /* UIView+Blur.swift */; };
 		E85934E422C3630300333824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934E322C3630300333824 /* AppDelegate.swift */; };
-		E85934E622C3630300333824 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934E522C3630300333824 /* ViewController.swift */; };
 		E85934EB22C3630400333824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85934EA22C3630400333824 /* Assets.xcassets */; };
 		E85934EE22C3630400333824 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85934EC22C3630400333824 /* LaunchScreen.storyboard */; };
 		E85934F922C3630400333824 /* DoomPrequelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85934F822C3630400333824 /* DoomPrequelTests.swift */; };
@@ -20,7 +28,6 @@
 		E8843FFE22D7D69E00E5A5AE /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8843FFD22D7D69D00E5A5AE /* ApiClient.swift */; };
 		E884400022D7D6E200E5A5AE /* MarsRoverApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8843FFF22D7D6E200E5A5AE /* MarsRoverApi.swift */; };
 		E884400222D7D73100E5A5AE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400122D7D73100E5A5AE /* Photo.swift */; };
-		E884400422D7D8C200E5A5AE /* DPDateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */; };
 		E884400622D7D95B00E5A5AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400522D7D95B00E5A5AE /* Constants.swift */; };
 		E884400822D7DCC900E5A5AE /* NASARoverApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400722D7DCC900E5A5AE /* NASARoverApi.swift */; };
 		E884400A22D7E3CC00E5A5AE /* PhotosRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884400922D7E3CC00E5A5AE /* PhotosRequestParameters.swift */; };
@@ -69,9 +76,17 @@
 		E818D23122D6844900231262 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		E818D23422D684DA00231262 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		E8203AD222DC9BD60079EEF9 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		E8203AD622DCB6EB0079EEF9 /* Constants+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+API.swift"; sourceTree = "<group>"; };
+		E8203AD822DCB7060079EEF9 /* Constants+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Date.swift"; sourceTree = "<group>"; };
+		E8203ADA22DCB7180079EEF9 /* Constants+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Text.swift"; sourceTree = "<group>"; };
+		E8203ADC22DCB9410079EEF9 /* ObservableType+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Additions.swift"; sourceTree = "<group>"; };
+		E8203ADE22DCB9AB0079EEF9 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
+		E8203AE022DCBAD50079EEF9 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
+		E8203AE222DCBB650079EEF9 /* Toast+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Additions.swift"; sourceTree = "<group>"; };
+		E8203AE622DCC0D70079EEF9 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
+		E8203AE822DCC0EF0079EEF9 /* UIView+Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Blur.swift"; sourceTree = "<group>"; };
 		E85934E022C3630300333824 /* DoomPrequel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoomPrequel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85934E322C3630300333824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E85934E522C3630300333824 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E85934EA22C3630400333824 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E85934ED22C3630400333824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E85934EF22C3630400333824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +97,6 @@
 		E8843FFD22D7D69D00E5A5AE /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		E8843FFF22D7D6E200E5A5AE /* MarsRoverApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverApi.swift; sourceTree = "<group>"; };
 		E884400122D7D73100E5A5AE /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDateFormatters.swift; sourceTree = "<group>"; };
 		E884400522D7D95B00E5A5AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E884400722D7DCC900E5A5AE /* NASARoverApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASARoverApi.swift; sourceTree = "<group>"; };
 		E884400922D7E3CC00E5A5AE /* PhotosRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRequestParameters.swift; sourceTree = "<group>"; };
@@ -168,6 +182,47 @@
 			path = DIContainer;
 			sourceTree = "<group>";
 		};
+		E8203AD422DCB5D90079EEF9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8203ADC22DCB9410079EEF9 /* ObservableType+Additions.swift */,
+				E8203ADE22DCB9AB0079EEF9 /* Dictionary+Additions.swift */,
+				E8203AE022DCBAD50079EEF9 /* UIViewController+Additions.swift */,
+				E8203AE222DCBB650079EEF9 /* Toast+Additions.swift */,
+				E8203AE622DCC0D70079EEF9 /* Date+Additions.swift */,
+				E8203AE822DCC0EF0079EEF9 /* UIView+Blur.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E8203AD522DCB6DB0079EEF9 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E884400522D7D95B00E5A5AE /* Constants.swift */,
+				E8203AD622DCB6EB0079EEF9 /* Constants+API.swift */,
+				E8203AD822DCB7060079EEF9 /* Constants+Date.swift */,
+				E8203ADA22DCB7180079EEF9 /* Constants+Text.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		E8203AE422DCBD740079EEF9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E884405122D8FD8F00E5A5AE /* PhotoCell.swift */,
+				E884405222D8FD8F00E5A5AE /* PhotoCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E8203AE522DCBD830079EEF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E884405522D92AAD00E5A5AE /* PDPickersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E85934D722C3630300333824 = {
 			isa = PBXGroup;
 			children = (
@@ -191,20 +246,19 @@
 		E85934E222C3630300333824 /* DoomPrequel */ = {
 			isa = PBXGroup;
 			children = (
-				E8203AD122DC9BC00079EEF9 /* DIContainer */,
-				E884403C22D8EAAC00E5A5AE /* Resources */,
-				E884401722D7F76400E5A5AE /* Storage */,
-				E818D23322D684CA00231262 /* Models */,
+				E85934EF22C3630400333824 /* Info.plist */,
+				E8203AD522DCB6DB0079EEF9 /* Constants */,
+				E8203AD422DCB5D90079EEF9 /* Extensions */,
 				E884400B22D7E3FF00E5A5AE /* Api */,
 				E884401D22D896B900E5A5AE /* Screens */,
 				E884402722D8CDBF00E5A5AE /* Routing */,
+				E8203AD122DC9BC00079EEF9 /* DIContainer */,
+				E884401722D7F76400E5A5AE /* Storage */,
+				E818D23322D684CA00231262 /* Models */,
+				E884403C22D8EAAC00E5A5AE /* Resources */,
 				E85934E322C3630300333824 /* AppDelegate.swift */,
-				E85934E522C3630300333824 /* ViewController.swift */,
 				E85934EA22C3630400333824 /* Assets.xcassets */,
 				E85934EC22C3630400333824 /* LaunchScreen.storyboard */,
-				E85934EF22C3630400333824 /* Info.plist */,
-				E884400322D7D8C200E5A5AE /* DPDateFormatters.swift */,
-				E884400522D7D95B00E5A5AE /* Constants.swift */,
 			);
 			path = DoomPrequel;
 			sourceTree = "<group>";
@@ -267,9 +321,8 @@
 				E884403722D8D62E00E5A5AE /* PhotosVC.swift */,
 				E884403A22D8DFCE00E5A5AE /* PhotosRouter.swift */,
 				E884403322D8D35F00E5A5AE /* PhotosModule.swift */,
-				E884405122D8FD8F00E5A5AE /* PhotoCell.swift */,
-				E884405222D8FD8F00E5A5AE /* PhotoCell.xib */,
-				E884405522D92AAD00E5A5AE /* PDPickersView.swift */,
+				E8203AE522DCBD830079EEF9 /* Views */,
+				E8203AE422DCBD740079EEF9 /* Cells */,
 			);
 			path = PhotosScreen;
 			sourceTree = "<group>";
@@ -296,10 +349,10 @@
 		E884402722D8CDBF00E5A5AE /* Routing */ = {
 			isa = PBXGroup;
 			children = (
-				E884403922D8D83700E5A5AE /* ScreenRoutes */,
 				E884402522D8CC7D00E5A5AE /* Router.swift */,
 				E884402B22D8CE1300E5A5AE /* Animator.swift */,
 				E884402A22D8CDEC00E5A5AE /* Transition */,
+				E884403922D8D83700E5A5AE /* ScreenRoutes */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -482,12 +535,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8203AD922DCB7060079EEF9 /* Constants+Date.swift in Sources */,
 				E884403622D8D46600E5A5AE /* PhotosRoute.swift in Sources */,
+				E8203ADB22DCB7180079EEF9 /* Constants+Text.swift in Sources */,
+				E8203AE722DCC0D70079EEF9 /* Date+Additions.swift in Sources */,
 				E884400D22D7E47700E5A5AE /* PageLoader.swift in Sources */,
+				E8203ADD22DCB9410079EEF9 /* ObservableType+Additions.swift in Sources */,
+				E8203ADF22DCB9AB0079EEF9 /* Dictionary+Additions.swift in Sources */,
 				E884401C22D8912E00E5A5AE /* PhotosVM.swift in Sources */,
-				E884400422D7D8C200E5A5AE /* DPDateFormatters.swift in Sources */,
 				E884400222D7D73100E5A5AE /* Photo.swift in Sources */,
 				E884400F22D7F36200E5A5AE /* RequestParameters.swift in Sources */,
+				E8203AE322DCBB650079EEF9 /* Toast+Additions.swift in Sources */,
 				E884403022D8D06300E5A5AE /* RoverSelectionRouter.swift in Sources */,
 				E884401F22D896DF00E5A5AE /* RoverSelectionVC.swift in Sources */,
 				E884400022D7D6E200E5A5AE /* MarsRoverApi.swift in Sources */,
@@ -498,14 +556,16 @@
 				E884402E22D8CE3700E5A5AE /* PushTransition.swift in Sources */,
 				E884402622D8CC7D00E5A5AE /* Router.swift in Sources */,
 				E884403822D8D62E00E5A5AE /* PhotosVC.swift in Sources */,
+				E8203AE922DCC0EF0079EEF9 /* UIView+Blur.swift in Sources */,
 				E884401622D7F51700E5A5AE /* RoverSelectionVM.swift in Sources */,
+				E8203AD722DCB6EB0079EEF9 /* Constants+API.swift in Sources */,
 				E884403B22D8DFCE00E5A5AE /* PhotosRouter.swift in Sources */,
 				E884400A22D7E3CC00E5A5AE /* PhotosRequestParameters.swift in Sources */,
 				E884400622D7D95B00E5A5AE /* Constants.swift in Sources */,
+				E8203AE122DCBAD50079EEF9 /* UIViewController+Additions.swift in Sources */,
 				E884405322D8FD8F00E5A5AE /* PhotoCell.swift in Sources */,
 				E818D23522D684DA00231262 /* Rover.swift in Sources */,
 				E8203AD322DC9BD60079EEF9 /* DIContainer.swift in Sources */,
-				E85934E622C3630300333824 /* ViewController.swift in Sources */,
 				E884402922D8CDD000E5A5AE /* Transition.swift in Sources */,
 				E85934E422C3630300333824 /* AppDelegate.swift in Sources */,
 				E884402322D8A2B800E5A5AE /* RoverCell.swift in Sources */,

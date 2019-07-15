@@ -15,7 +15,9 @@ import Toast_Swift
 
 class RoverSelectionVC : DPViewController {
     private let viewModel: RoverSelectionVM
+    
     private let hud: JGProgressHUD = JGProgressHUD(style: .dark)
+    
     init(viewModel: RoverSelectionVM) {
         self.viewModel = viewModel
         super.init()
@@ -28,9 +30,10 @@ class RoverSelectionVC : DPViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        hud.show(in: tableView)
-        setupTableViewSource()
         
+        hud.show(in: tableView)
+        
+        setupRx()
     }
 
     private func setupUI() {
@@ -50,9 +53,10 @@ class RoverSelectionVC : DPViewController {
         }
     }
     
-    private func setupTableViewSource() {
+    private func setupRx() {
         
-        tableView.register(UINib(nibName: Constants.TableView.CellIdentifier.rover.rawValue, bundle: nil), forCellReuseIdentifier: Constants.TableView.CellIdentifier.rover.rawValue)
+        tableView.register(UINib(nibName: Constants.TableView.CellIdentifier.rover.rawValue, bundle: nil),
+                           forCellReuseIdentifier: Constants.TableView.CellIdentifier.rover.rawValue)
         
         let rovers = viewModel
             .roversObservable
@@ -66,8 +70,9 @@ class RoverSelectionVC : DPViewController {
             .disposed(by: trash)
             
         rovers
-            .bind(to: tableView.rx.items(cellIdentifier: Constants.TableView.CellIdentifier.rover.rawValue, cellType: RoverCell.self)) { row, element, cell in
-                cell.setup(with: element)
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.TableView.CellIdentifier.rover.rawValue,
+                                         cellType: RoverCell.self)) { row, rover, cell in
+                cell.setup(with: rover)
             }
             .disposed(by: trash)
         
@@ -78,13 +83,11 @@ class RoverSelectionVC : DPViewController {
                 self?.viewModel.userSelected(element)
             })
             .disposed(by: trash)
+        
         viewModel
             .errorObservable
             .subscribe(onNext: {[weak self] error in
-                guard let view = self?.view else {
-                    return
-                }
-                view.makeToast("\(Constants.Text.errorText.localized()) - \(error.localizedDescription)", duration: 3, point: view.center, title: Constants.Text.errorTitle.localized(), image: nil, style: ToastStyle.default(), completion: nil)
+                self?.handleError(error: error)
             })
             .disposed(by: trash)
     }
@@ -108,8 +111,6 @@ class RoverSelectionVC : DPViewController {
         return tableView
     }()
     
-
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -118,20 +119,5 @@ class RoverSelectionVC : DPViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-}
-
-extension UIView {
-    func addSubview(_ view: UIView, maker: (ConstraintMaker) -> Void) {
-        self.addSubview(view)
-        self.snp.makeConstraints(maker)
-    }
-}
-
-extension ToastStyle {
-    static func `default`() -> ToastStyle {
-        var style = ToastStyle()
-        style.titleAlignment = .center
-        return style
     }
 }

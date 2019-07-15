@@ -18,10 +18,11 @@ enum NASAService: TargetType {
     
     public var path: String {
         let rovers = "\(Constants.API.Path.rovers)"
-        let photos = "\(Constants.API.Path.photos)"
         switch self {
         case .rovers: return "/\(rovers)"
-        case .photos(let parameters): return "/\(rovers)/\(parameters.roverName.lowercased())/\(photos)"
+        case .photos(let parameters):
+            let photos = "\(Constants.API.Path.photos)"
+            return "/\(rovers)/\(parameters.roverName.lowercased())/\(photos)"
         }
     }
     
@@ -38,25 +39,22 @@ enum NASAService: TargetType {
     }
     
     public var task: Task  {
-        var requestParameters: JSON = [Constants.API.Parameters.apiKey.rawValue: Constants.API.Parameters.NASAKey]
+        var requestParameters: JSON = [
+            Constants.API.Parameters.apiKey.rawValue: Constants.API.Parameters.NASAKey
+        ]
         switch self {
         case .rovers:
-            return .requestParameters(parameters: requestParameters, encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: requestParameters,
+                                      encoding: URLEncoding.queryString)
         case .photos(let photosParameters):
             requestParameters.merge(dict: photosParameters.parameters)
-            return .requestParameters(parameters: requestParameters, encoding: URLEncoding.queryString)
+            
+            return .requestParameters(parameters: requestParameters,
+                                      encoding: URLEncoding.queryString)
         }
     }
     
     public var headers: [String : String]? {
         return ["Content-Type": "application/json"]
-    }
-}
-
-extension Dictionary {
-    mutating func merge(dict: [Key: Value]){
-        for (k, v) in dict {
-            updateValue(v, forKey: k)
-        }
     }
 }

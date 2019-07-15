@@ -11,7 +11,7 @@ import RxSwift
 
 class PageLoader<T> {
     
-    var requestExecutor: (RequestParameters) -> Observable<[T]>
+    private let requestExecutor: (RequestParameters) -> Observable<[T]>
     
     private var requestParameters: RequestParameters
     
@@ -19,7 +19,8 @@ class PageLoader<T> {
     
     private(set) var endReached: Bool = false
     
-    init(params: RequestParameters, requestExecutor: @escaping (RequestParameters) -> Observable<[T]>) {
+    init(params: RequestParameters,
+         requestExecutor: @escaping (RequestParameters) -> Observable<[T]>) {
         self.requestParameters = params
         self.requestExecutor = requestExecutor
     }
@@ -28,7 +29,9 @@ class PageLoader<T> {
         guard !endReached else {
             return .just([])
         }
-        requestParameters.integrate(value: page, for: Constants.API.Parameters.page.rawValue)
+        requestParameters.integrate(value: page,
+                                    for: Constants.API.Parameters.page.rawValue)
+        
         return requestExecutor(requestParameters)
             .do(onNext: { [weak self] result in
                 if result.count < Constants.API.pageLimit {

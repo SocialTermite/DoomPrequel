@@ -34,7 +34,7 @@ extension Rover: Codable {
 
     
     func encode(to encoder: Encoder) throws {
-        let formatter = DPDateFormatters.default
+        let formatter = Constants.Date.Formatters.default.formatter()
         var container = encoder.container(keyedBy: RoverCodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(formatter.string(from: landingDate) , forKey: .landingDate)
@@ -60,7 +60,7 @@ extension Rover: Codable {
         let launchDateString = try container.decode(String.self, forKey: .launchDate)
         let maxDateString = try container.decode(String.self, forKey: .maxDate)
         
-        let dateFormatter = DPDateFormatters.default
+        let dateFormatter = Constants.Date.Formatters.default.formatter()
         
         landingDate = dateFormatter.date(from: landingDateString) ?? Date()
         launchDate = dateFormatter.date(from: launchDateString) ?? Date()

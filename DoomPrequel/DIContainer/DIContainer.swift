@@ -19,7 +19,7 @@ class DIContainer {
     func registerDependencies() {
         registerApiLayer()
         registerCache()
-        registerScreenDependincies()
+        registerScreens()
     }
     
     func roverSelectionVC() -> RoverSelectionVC {
@@ -58,7 +58,7 @@ class DIContainer {
         container.register(UserCache.self) { _ in UserCache() }
     }
     
-    private func registerScreenDependincies() {
+    private func registerScreens() {
         registerRoverSelectionVC()
         registerPhotosVC()
     }

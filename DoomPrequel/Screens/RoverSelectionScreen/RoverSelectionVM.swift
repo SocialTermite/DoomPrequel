@@ -12,10 +12,12 @@ import RxCocoa
 
 
 class RoverSelectionVM {
+    private let trash = DisposeBag()
+    
     private let api: ApiClient
     private let userCache: UserCache
-    private let trash = DisposeBag()
     private let router: PhotosRoute
+    
     private var rovers: BehaviorRelay<[Rover]> = .init(value: [])
     private var apiError: BehaviorRelay<Error?> = .init(value: nil)
     

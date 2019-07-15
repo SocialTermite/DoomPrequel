@@ -24,7 +24,10 @@ class PhotoCell: UITableViewCell {
     
     func setup(with photo: Photo) {
         photoImageView.kf.indicatorType = .activity
-        photoImageView.kf.setImage(with:  ImageResource(downloadURL: photo.imgSource), placeholder: nil, options: [.fromMemoryCacheOrRefresh, .transition(.fade(1)), .scaleFactor(UIScreen.main.scale)]) {[weak self] _, _, _, _ in
+        photoImageView.kf.setImage(with:  ImageResource(downloadURL: photo.imgSource),
+                                   placeholder: nil,
+                                   options: [.fromMemoryCacheOrRefresh, .transition(.fade(1)), .scaleFactor(UIScreen.main.scale)])
+        { [weak self] _, _, _, _ in
             self?.isDownloaded()
         }
     }
