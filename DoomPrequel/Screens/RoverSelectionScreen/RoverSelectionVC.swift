@@ -60,7 +60,6 @@ class RoverSelectionVC : DPViewController {
         
         let rovers = viewModel
             .roversObservable
-            .debug()
             .share()
         
         rovers
